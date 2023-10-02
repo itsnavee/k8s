@@ -1,4 +1,4 @@
-> This tutorial is a modified version of the original developed by [Kelsey Hightower](https://github.com/kelseyhightower/kubernetes-the-hard-way).
+> This is a personal lab that is a modified version of the original developed by [Mumshad Mannambeth](https://github.com/mmumshad/kubernetes-the-hard-way).
 
 # Kubernetes The Hard Way On VirtualBox
 
