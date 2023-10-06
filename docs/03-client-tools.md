@@ -97,7 +97,7 @@ Copy the output into a notepad and form it into the following command
 
 ```bash
 cat >> ~/.ssh/authorized_keys <<EOF
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD...OUTPUT-FROM-ABOVE-COMMAND...8+08b vagrant@master-1
+ssh-rsa AAAA...OUTPUT-FROM-ABOVE-COMMAND...xxxb vagrant@master-1
 EOF
 ```
 
