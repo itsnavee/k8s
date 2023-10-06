@@ -1,0 +1,29 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+# Require at least v1.8 to support linked cloning
+Vagrant.require_version ">= 1.8"
+
+linuxnodes = {
+  "vm01" => {},
+  "vm02" => {}, "vm03" => {}, "vm04" => {}, "vm05" => {}, "vm06" => {}, "vm07" => {}, "vm08" => {},
+  "vm09" => {}, "vm10" => {}, "vm11" => {}, "vm12" => {}, "vm13" => {}, "vm14" => {}, "vm15" => {}
+}
+
+# Set up Vagrant
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  linuxnodes.each_with_index do |(hostname,properties), index|
+    config.vm.define hostname do |node_config|
+      node_config.vm.box     = "debian/jessie64"
+      #node_config.vm.box_url = "https://github.com/kraksoft/vagrant-box-debian/releases/download/7.8.0/debian-7.8.0-amd64.box"
+      #node_config.vm.synced_folder ".", "/vagrant", :disabled => true
+      node_config.vm.provider :virtualbox do |vb|
+        vb.linked_clone = true
+        vb.customize ["modifyvm", :id, "--memory", 128]
+      end
+    end
+  end
+end

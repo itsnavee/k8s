@@ -71,6 +71,7 @@ Vagrant.configure("2") do |config|
       end
       node.vm.hostname = "master-#{i}"
       node.vm.network :private_network, ip: IP_NW + "#{MASTER_IP_START + i}"
+      node.vm.network "forwarded_port", guest: 80, host: "#{8010 + i}"
       node.vm.network "forwarded_port", guest: 22, host: "#{2710 + i}"
       provision_kubernetes_node node
       if i == 1
@@ -90,6 +91,7 @@ Vagrant.configure("2") do |config|
     end
     node.vm.hostname = "loadbalancer"
     node.vm.network :private_network, ip: IP_NW + "#{LB_IP_START}"
+    node.vm.network "forwarded_port", guest: 80, host: 8030
     node.vm.network "forwarded_port", guest: 22, host: 2730
     setup_dns node
   end
@@ -104,6 +106,7 @@ Vagrant.configure("2") do |config|
       end
       node.vm.hostname = "worker-#{i}"
       node.vm.network :private_network, ip: IP_NW + "#{NODE_IP_START + i}"
+      node.vm.network "forwarded_port", guest: 80, host: "#{8020 + i}"
       node.vm.network "forwarded_port", guest: 22, host: "#{2720 + i}"
       provision_kubernetes_node node
     end
