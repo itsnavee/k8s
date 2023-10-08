@@ -11,11 +11,11 @@ In this section you will verify the ability to [encrypt secret data at rest](htt
 Create a generic secret:
 
 ```bash
-kubectl create secret generic kubernetes-the-hard-way \
+kubectl create secret generic kitkats \
   --from-literal="mykey=mydata"
 ```
 
-Print a hexdump of the `kubernetes-the-hard-way` secret stored in etcd:
+Print a hexdump of the `kitkats` secret stored in etcd:
 
 ```bash
 sudo ETCDCTL_API=3 etcdctl get \
@@ -23,7 +23,7 @@ sudo ETCDCTL_API=3 etcdctl get \
   --cacert=/etc/etcd/ca.crt \
   --cert=/etc/etcd/etcd-server.crt \
   --key=/etc/etcd/etcd-server.key\
-  /registry/secrets/default/kubernetes-the-hard-way | hexdump -C
+  /registry/secrets/default/kitkats | hexdump -C
 ```
 
 > output
@@ -51,7 +51,7 @@ The etcd key should be prefixed with `k8s:enc:aescbc:v1:key1`, which indicates t
 
 Cleanup:
 ```bash
-kubectl delete secret kubernetes-the-hard-way
+kubectl delete secret kitkats
 ```
 
 ## Deployments

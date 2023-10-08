@@ -67,7 +67,7 @@ Generate a kubeconfig file for the first worker node.
 On `master-1`:
 ```bash
 {
-  kubectl config set-cluster kubernetes-the-hard-way \
+  kubectl config set-cluster kitkats \
     --certificate-authority=/var/lib/kubernetes/pki/ca.crt \
     --server=https://${LOADBALANCER}:6443 \
     --kubeconfig=worker-1.kubeconfig
@@ -78,7 +78,7 @@ On `master-1`:
     --kubeconfig=worker-1.kubeconfig
 
   kubectl config set-context default \
-    --cluster=kubernetes-the-hard-way \
+    --cluster=kitkats \
     --user=system:node:worker-1 \
     --kubeconfig=worker-1.kubeconfig
 
